@@ -1,0 +1,31 @@
+Problem:
+
+Design a mobile snake game
+- 2 dimensional board
+- snake starts with initial size of 3
+- snake grows every 5 seconds
+- game ends on crash
+
+Solution
+
+Entities
+
+- Cell
+  * Row
+  * Col
+  * CellType: Empty | snake
+
+- Board
+  * rowCount
+  * colCount
+  * cells -> Cell[]
+
+- Snake
+  * SnakeBody -> Doubly Linked List
+  * move(cell: Cell) => crashed?
+
+- Game
+  * Board
+  * Snake
+  * play(direction) => game-over?
+  * growSnake() -> time based -> Adds a cell to the snakehead

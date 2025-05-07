@@ -1,0 +1,61 @@
+Problem:
+
+Design a cost explorer
+
+- Plans => Standard, Premium
+- Pricing => monthly, annual
+- Tier Based Pricing
+
+- Should have flexible start and end date
+
+
+Solution:
+
+Assumptions:
+
+- Even if one license is used in a month, it will be counted
+- Lowest usage calculation is month
+- User can choose between monthly and annual Plans
+- Tier based Pricing takes preference over flat Pricing
+
+Entities:
+
+- usage
+[{
+  month: 202501,
+  plan: "Standard",
+  seats: 100
+}]
+
+- Plan
+[{
+  name: "Standard",
+  monthlyPrice: 15,
+  annualPrice: 10,
+  tiers: [{
+    from: 1, to: 100, monthlyPrice: 12, annualPrice: 8
+  },
+  {
+    from: 101, to: -1, monthlyPrice: 10, annualPrice: 5
+  }]
+}]
+
+- Cost explorer
+
+calculateCost = (fromMonth: number, toMonth: number, usage: Usage[], billingPreference: M|A) => {
+  totalCost: number;
+  monthlyCost: {
+    month: number;
+    cost: number;
+    plan: Plan
+  }[]
+}
+
+- Discounts
+
+  * Classify if pricing or bill Discounts
+  * Pricing discount => Apply when calculating per user price
+  * If Bill Discount => Apply after calculating the final bill
+
+  * Classify if flat or percentage discount
+  

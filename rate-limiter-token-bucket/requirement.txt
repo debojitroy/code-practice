@@ -1,0 +1,11 @@
+Problem:
+
+Design a rate limiter with some bursting
+
+Solution
+
+- Token Bucket
+- A bucket of token (C)
+- Each operation uses some tokens (X)
+- Bucket gets refilled at rate (R)
+- For every request, check if there are enough tokens in the bucket

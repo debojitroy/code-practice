@@ -1,0 +1,30 @@
+Problem
+
+Build a middleware router
+- matches the route pattern and returns
+  - full path for wildcard
+  - positional params
+  - query params
+- if no match found returns 404
+
+
+Solution
+
+1. Intercept every incoming request
+2. Pass the complete the url to the middleware
+3. Route matching function
+  getRouteParts = (routePattern, incomingRoute) => 
+    ({ wildcard: "", params: Record<string, string>, queryParams : Record<string, string | string[]})
+4. Route Matching logic
+  - Split the path into route segment and query segment on "?"
+  - Split route segment into tokens on "/" - for both route pattern and incoming route
+  - If the length of the incoming tokens and the route tokens dont match, AND route doesn't end with "*",
+    then NOT a match
+  - While iterating, if the next incoming token doesn't match route pattern token AND next route token is NOT "*",
+    then NOT a match
+  - If the next route pattern token is "*", then rest of the incoming route is "wildcard"
+  - If the next route pattern token starts with ":", then next incoming token is positional params
+5. Query Matching logic
+  - Split by "&"
+  - Split each token by "="
+  - If same key occurs more than once, then it is an Array

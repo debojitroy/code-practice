@@ -1,0 +1,11 @@
+Problem
+
+Design a Rate Limiter
+
+Solution
+
+- Algo: Leaky bucket
+- Imagine a bucket of capacity (C)
+- Each request adds a drop to the bucket
+- The bucket leaks at a constant rate (R)
+- If the bucket is full, the request is rejected

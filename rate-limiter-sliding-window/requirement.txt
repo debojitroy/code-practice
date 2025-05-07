@@ -1,0 +1,13 @@
+Problem:
+
+Design a rate limiter which allows X request in the last Y seconds
+
+Solution
+
+- Sliding Window Log
+- Keep track of incoming request with timestamp in a List
+- For every incoming request
+  - Calculate the cutoff
+  - Remove the older requests based on the cutoff
+  - Check if the length of the list is below the threshold
+  - If length is less, then allow the request

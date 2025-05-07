@@ -1,0 +1,25 @@
+{
+  "name": "bun-bootstrap",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev:cmd": "bun --watch src/cmd/index.ts",
+    "build:cmd": "bun build src/cmd/index.ts --target bun --outdir ./dist/cmd",
+    "start:cmd": "NODE_ENV=production bun dist/cmd/index.js",
+    "dev:web": "bun --watch src/web/app.ts",
+    "build:web": "bun build src/web/app.ts --target bun --outdir ./dist/web",
+    "start:web": "NODE_ENV=production bun dist/web/app.js",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.9"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@elysiajs/swagger": "^1.2.2",
+    "elysia": "^1.2.25"
+  }
+}

@@ -1,0 +1,11 @@
+Problem
+
+Design a rate limiter which allows only X request per second
+
+Solution
+
+- Fixed Window
+- Divide current time into Fixed windows of window size (S)
+- When a new request comes in, check if the request is in the current window
+- If in the current window, check the request tracker count and if it is below threshold, allow the request
+- If it is a new window, reset the counter and increment by 1 and allow the request
